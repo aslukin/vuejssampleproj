@@ -1,7 +1,12 @@
+/* eslint-disable vue/valid-v-for */
 <template>
     <div>
         <ul>
-            <TodoItem />
+            <TodoItem 
+                v-for="todo in todos"
+                :key="todo"
+                v-bind:todo="todo"
+            />
             
             
             <li>todo 1</li>
@@ -14,9 +19,19 @@
 <script>
 import TodoItem from '@/components/TodoItem'
 export default {
+    props: ['todos'],
     components: {
         TodoItem
     }
     
 }
 </script>
+
+
+<style scoped>
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+</style>
